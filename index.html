@@ -13,7 +13,21 @@
 </head>
 
 <body class="">
-    <main class=" min-h-screen  bg-[#1E1E1E] bg-[url(images/background.png)] bg-no-repeat bg-center">
+    <main class="min-h-screen  bg-[#1E1E1E] bg-[url(images/background.png)] bg-no-repeat bg-center ">
+        <!-- model section -->
+        <!-- You can open the modal using ID.showModal() method -->
+        <div id="model" class="justify-center items-center w-full h-full">
+            <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
+            <dialog id="my_modal_3" class="modal">
+                <div class="modal-box">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 class="font-bold text-lg">Hello!</h3>
+                    <p class="py-4">Press ESC key or click on ✕ button to close</p>
+                </div>
+            </dialog>
+        </div>
         <!-- Home Screen -->
         <section id="home-screen" class=" flex justify-center items-center ">
             <div class="min-h-screen flex flex-col items-center justify-center">
@@ -26,9 +40,11 @@
         <section id="play-ground" class="playground hidden flex flex-col justify-center items-center gap-16  ">
             <!-- Art board -->
             <div class="flex justify-center items-center mt-24">
-                <div class="artboard artboard-horizontal phone-6 border-[20px] rounded-2xl border-[#252634CC] bg-[#FFFFFFB3]">
+                <div id="art-board"
+                    class="artboard artboard-horizontal phone-6 border-[20px] rounded-2xl border-[#252634CC] bg-[#FFFFFFB3]">
                     <div class="flex justify-center ">
-                        <p class="bg-[#252634CC] font-poppins text-white text-lg pb-4 px-7 rounded-b-xl">Don't watch keyboard  while playing...</p>
+                        <p class="bg-[#252634CC] font-poppins text-white text-lg pb-4 px-7 rounded-b-xl">Don't watch
+                            keyboard while playing...</p>
                     </div>
                     <div class="flex justify-center items-center h-full">
                         <p id="current-alphabet" class="font-poppins text-9xl font-semibold uppercase">Y</p>
@@ -48,8 +64,8 @@
                     <kbd id="i" class="kbd">i</kbd>
                     <kbd id="o" class="kbd">o</kbd>
                     <kbd id="p" class="kbd">p</kbd>
-                  </div> 
-                  <div class="flex justify-center gap-1 my-1 w-full uppercase font-poppins font-bold">
+                </div>
+                <div class="flex justify-center gap-1 my-1 w-full uppercase font-poppins font-bold">
                     <kbd id="a" class="kbd">a</kbd>
                     <kbd id="s" class="kbd">s</kbd>
                     <kbd id="d" class="kbd">d</kbd>
@@ -59,8 +75,8 @@
                     <kbd id="j" class="kbd">j</kbd>
                     <kbd id="k" class="kbd">k</kbd>
                     <kbd id="l" class="kbd">l</kbd>
-                  </div> 
-                  <div class="flex justify-center gap-1 my-1 w-full uppercase font-poppins font-bold">
+                </div>
+                <div class="flex justify-center gap-1 my-1 w-full uppercase font-poppins font-bold">
                     <kbd id="z" class="kbd">z</kbd>
                     <kbd id="x" class="kbd">x</kbd>
                     <kbd id="c" class="kbd">c</kbd>
@@ -69,7 +85,7 @@
                     <kbd id="n" class="kbd">n</kbd>
                     <kbd id="m" class="kbd">m</kbd>
                     <kbd id="/" class="kbd">/</kbd>
-                  </div>
+                </div>
             </div>
             <!--  keyboard end -->
             <!-- play button -->

@@ -11,10 +11,15 @@
 // capture keyboard press
 document.addEventListener("keyup", handleKeyboardPress);
 
+
+const audio = new Audio();
+let isGameOn = false;
+let artBoard = document.getElementById('art-board');
 function handleKeyboardPress(event) {
+    if (isGameOn === false) return;
     const playerPress = event.key;
     console.log(playerPress);
-    if(playerPress === 'Escape'){
+    if (playerPress === 'Escape') {
         gameOver();
     }
 
@@ -26,10 +31,16 @@ function handleKeyboardPress(event) {
 
     // check match or not
     if (expectedAlphabet === playerPress) {
+        audio.src = '../audio/success.wav';
+        audio.play();
+
+
+
         console.log('You got one point');
         const currentScore = getTexValueElementById('current-score');
         const newScore = currentScore + 1;
         setTexValueElementById('current-score', newScore);
+
         // -----------------------------------
         // get current score
         // const currentScoreElement = document.getElementById('current-score');
@@ -45,10 +56,17 @@ function handleKeyboardPress(event) {
     }
     else {
         console.log("You lost one point")
+        audio.src = '../audio/lost.wav'
+        audio.play();
+
         const currentLife = getTexValueElementById('life-score');
         const life = currentLife - 1;
+
+        const updatedLife = (life / 5) * 100;
+        artBoard.style.background = `linear-gradient(#FFFFFFB3 ${updatedLife}%, red)`
+
         setTexValueElementById('life-score', life);
-        if(life === 0){
+        if (life === 0) {
             gameOver();
         }
         // ------------------------
@@ -76,6 +94,9 @@ function play() {
     hideElementId('home-screen');
     hideElementId('final-score');
     showElementId('play-ground');
+
+    isGameOn = true;
+
     continueGame();
 }
 
@@ -89,4 +110,17 @@ function gameOver() {
     const currentAlphabetElement = document.getElementById('current-alphabet');
     const currentAlphabet = currentAlphabetElement.innerText;
     removeBackgroundColorById(currentAlphabet);
+
+    isGameOn = false;
+    artBoard.style.background = "linear-gradient(#FFFFFFB3 100%, red)";
+}
+
+document.body.onmousemove = modelBtn
+
+function modelBtn(event) {
+    console.log(event)
+    if(event.clientY < 12){
+        document.getElementById("model").style.display = "flex";
+    }
+    
 }
